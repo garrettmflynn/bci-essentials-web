@@ -19,6 +19,9 @@ The Unity package can be found in [bci-essentials-unity](https://www.github.com/
 - [ ] SSVEP UI
 - [ ] Motor Imagery UI
 
+### Additional Niceties
+- Assign `on` and `off` behaviors for each reference, rather than globally.
+
 ## Getting Started
 Run the `index.html` file using VSCode Live Server (or any other web server).
 
