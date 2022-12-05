@@ -19,7 +19,7 @@ The Unity package can be found in [bci-essentials-unity](https://www.github.com/
 - [ ] SSVEP UI
 - [ ] Motor Imagery UI
 
-### Additional Niceties
+### Additional Things to Add
 - Assign `on` and `off` behaviors for each reference, rather than globally.
 
 ## Getting Started
