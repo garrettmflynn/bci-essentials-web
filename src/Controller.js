@@ -1,5 +1,6 @@
 import controllers from './controllers/index.js'
 import WebSocketClient from "./WebSocketClient.js";
+import {wait} from './utils.js'
 
 export default class Controller {
 
@@ -76,6 +77,18 @@ export default class Controller {
 
     targetOff = (ref) => ref.style.backgroundColor = ''
 
+    onSelect = async (ref) => {
+        await wait(500)
+        this.on(ref)
+        await wait(200)
+        this.off(ref)
+        await wait(200)
+        this.on(ref)
+        await wait(200)
+        this.off(ref)
+    }
+
+
     // Socket Behaviors
     onmessage = (event) => {
         console.log('Message from Socket:', event.data);
@@ -87,10 +100,15 @@ export default class Controller {
     }
 
     select = (i = this.selection) => {
+
+        let el;
         if (i !== undefined) {
             if (i instanceof HTMLElement) i = this.refs.indexOf(i)
             if (this.context.states.selecting) this.current.select(i)
-            else this.send(i)
+            else {
+                this.onSelect(this.refs[i])
+                this.send(i)
+            }
         } else {
             console.error('No selection provided')
         }
