@@ -8,17 +8,15 @@ async def consumer(message, websocket):
     print(message)
 
     if (type(message) == int):
-        print("< Selection: {}".format(message))
-        greeting = "Selected {}!".format(message)
+        print(f"< Selection: {message}")
+        greeting = f"Selected {message}!"
         await websocket.send(greeting)
 
-    # do something with the marker
     elif message['data']:
-        print("< Marker: {}".format(message))
+        print(f"< Marker: {message}")
 
-    # do something with selection
     else: 
-        print("< Other: {}".format(message))
+        print(f"< Other: {message}")
 
 async def hello(websocket, path):
     while True:
